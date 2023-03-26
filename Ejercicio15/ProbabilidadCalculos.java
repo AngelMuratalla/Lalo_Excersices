@@ -30,6 +30,6 @@ public class ProbabilidadCalculos {
         for (int i = 0; i < this.numeros.length; i++) {
             sumatoria += Math.pow(this.numeros[i] - media, 2);
         }
-        return Math.sqrt(sumatoria/this.numeros.length - 1);
+        return Math.sqrt(sumatoria/(this.numeros.length - 1));
     }
 }

@@ -41,9 +41,11 @@ public class Fecha {
     private void valida(int dia, int mes, int anio) {
         if (!(dia >= 1 && dia <= 31)) {
             this.dia = 1;
-        } else if (!(mes >= 1 && mes <= 12)) {
+        } 
+        if (!(mes >= 1 && mes <= 12)) {
             this.mes = 1;
-        } else if (!(anio >= 1900 && anio <= 2050)) {
+        }
+        if (!(anio >= 1900 && anio <= 2050)) {
             this.anio = 1900;
         }
     }
@@ -92,7 +94,7 @@ public class Fecha {
     }
     
     public int diasTranscurridos(){
-        return this.transcurridosEnAños() + this.transcurridosEnMeses() + this.dia;
+        return this.transcurridosEnAños() + this.transcurridosEnMeses() + (this.dia - 1);
     }
     
     public String diaSemana(){
@@ -101,8 +103,8 @@ public class Fecha {
     }
    
     public void larga(){
-        String[] meses = {"enero","febrero","arzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"};
-        System.out.printf("%s %d de %s de %d", this.diaSemana(), this.anio, meses[this.mes], this.anio);
+        String[] meses = {"enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"};
+        System.out.printf("%s %d de %s de %d", this.diaSemana(), this.dia, meses[this.mes-1], this.anio);
     }
     
     public void fechaTras(long dias){
@@ -142,7 +144,13 @@ public class Fecha {
     }
    
     public static void main(String[] args) {
-       
+       Fecha a = new Fecha(1, 1, 2010);
+       System.out.println(a.diaSemana());
+       System.out.println(a.diaMes(12));
+       System.out.println(0%4);
+       System.out.println(a.diasTranscurridos());
+       a.fechaTras(2);
+       a.larga();
     }
 
 }
